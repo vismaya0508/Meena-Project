@@ -10,7 +10,7 @@ load_dotenv()
 PROVIDER_CONFIGS = {
     "Google Gemini (Free)": {
         "base_url": "https://generativelanguage.googleapis.com/v1beta/openai/",
-        "model": "gemini-2.0-flash",
+        "model": "gemini-3.5-flash",
         "env_var": "GEMINI_API_KEY",
         "name": "Google Gemini",
         "doc_url": "https://aistudio.google.com/app/apikey",
@@ -18,11 +18,11 @@ PROVIDER_CONFIGS = {
     },
     "Groq (Free)": {
         "base_url": "https://api.groq.com/openai/v1",
-        "model": "llama-3.3-70b-versatile",
+        "model": "openai/gpt-oss-120b",
         "env_var": "GROQ_API_KEY",
         "name": "Groq",
         "doc_url": "https://console.groq.com/keys",
-        "help_text": "Ultra-fast open models (Llama 3.3). 100% free with NO credit card needed."
+        "help_text": "Ultra-fast open models (GPT-OSS 120B). 100% free with NO credit card needed."
     },
     "OpenRouter (Free Tier)": {
         "base_url": "https://openrouter.ai/api/v1",
@@ -179,9 +179,9 @@ DOCUMENT EXCERPTS:
         
         candidates = [self.model_name or cfg["model"]]
         if self.provider == "Google Gemini (Free)":
-            candidates = ["gemini-2.0-flash", "gemini-2.5-flash-lite", "gemini-2.0-flash-lite", "gemini-2.5-flash", "gemini-3.8-flash"]
+            candidates = ["gemini-3.5-flash", "gemini-3.6-flash", "gemini-flash-latest", "gemini-flash-lite-latest"]
         elif self.provider == "Groq (Free)":
-            candidates = ["llama-3.3-70b-versatile", "llama-3.1-8b-instant"]
+            candidates = ["openai/gpt-oss-120b", "openai/gpt-oss-20b", "qwen/qwen3.6-27b"]
 
         last_error = ""
         # If model is already a mock (in unit tests) or normal single-run
